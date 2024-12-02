@@ -3,7 +3,7 @@ import {useMoisture} from "./useMoisture";
 
 export default function App() {
 
-  const { data, error } = useMoisture(1)
+  const { data } = useMoisture(1)
 
   return (
     <div className="App">
