@@ -1,5 +1,6 @@
 import './App.css';
-import {SensorMoisture, useMoisture, useRecentMoisture} from "./useMoisture";
+import { useMoisture, useRecentMoisture} from "./useMoisture";
+import {SensorValues} from "./table/sensorValues";
 
 export default function App() {
 
@@ -69,26 +70,3 @@ export default function App() {
   );
 }
 
- function SensorValues({sensorValues}: { sensorValues: SensorMoisture[] | undefined }) {
-  const sortedAndSliced  = sensorValues?.sort((a: SensorMoisture, b: SensorMoisture) => {
-    return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
-  })
-    .slice(0, 10)
-
-  return (
-    <>
-      {sortedAndSliced?.map((moisture) => (
-        <tr>
-          <td>{moisture.sensorId}</td>
-          <td>{moisture.moisturePercentage}</td>
-          <td>{moisture.updatedAt}</td>
-        </tr>
-      ))}
-      <tr>
-        <td>--</td>
-        <td>--</td>
-        <td>--</td>
-      </tr>
-    </>
-  )
- }
