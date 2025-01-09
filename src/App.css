@@ -13,3 +13,22 @@
   color: white;
 }
 
+.recent-moisture{
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  justify-content: center;
+
+}
+.recent-moisture__sensor-status{
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  border-radius: 10px;
+}
+
+.moisture-table{
+  margin-top: 40px;
+    width: 100%;
+    border-collapse: collapse;
+}
