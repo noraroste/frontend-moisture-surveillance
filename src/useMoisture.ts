@@ -1,6 +1,6 @@
 import {useQuery, UseQueryResult} from "@tanstack/react-query";
 
-const apiUrl = "https://moisture-surveillance-production.up.railway.app:8080"
+const apiUrl = "https://moisture-surveillance-production.up.railway.app"
 export function useMoisture(sensor: number): UseQueryResult<SensorMoisture[]>   {
 
   const MOISTURE_URL = `${apiUrl}/moisture?sensorId=${sensor}`;
