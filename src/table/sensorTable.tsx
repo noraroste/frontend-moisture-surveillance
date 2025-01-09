@@ -1,6 +1,7 @@
-import './sensorTable.css'
-import {useMoisture} from "../useMoisture";
-import {SensorValues} from "./sensorValues";
+import './sensorTable.css';
+import { useMoisture } from '../useMoisture';
+import { SensorValues } from './sensorValues';
+import { getPlantName } from '../sensorMapping';
 
 export function SensorTable({sensorId} :{sensorId: number})  {
   const {data} = useMoisture(sensorId)
@@ -8,11 +9,11 @@ export function SensorTable({sensorId} :{sensorId: number})  {
   return (
     <table className='moisture-table'>
       <thead>
-      <tr>
-        <th colSpan={3}>
-          Recent moisture measurements for sensor {sensorId}
-        </th>
-      </tr>
+        <tr>
+          <th colSpan={3}>
+            Recent moisture measurements for {getPlantName(sensorId)}
+          </th>
+        </tr>
       </thead>
       <tbody>
       <tr>
