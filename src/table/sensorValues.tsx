@@ -15,11 +15,6 @@ export function SensorValues({sensorValues}: { sensorValues: SensorMoisture[] | 
           <td>{moisture.updatedAt}</td>
         </tr>
       ))}
-      <tr>
-        <td>--</td>
-        <td>--</td>
-        <td>--</td>
-      </tr>
     </>
   )
 }

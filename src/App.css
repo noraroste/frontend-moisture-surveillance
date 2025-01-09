@@ -26,26 +26,3 @@
   margin-right: 10px;
   border-radius: 10px;
 }
-
-.moisture-table{
-  margin-top: 40px;
-    width: 100%;
-    border-collapse: collapse;
-}
-.moisture-table th, .moisture-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-.moisture-table th {
-  background-color: #f2f2f2;
-  text-align: left;
-}
-
-.moisture-table tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-.moisture-table tr:hover {
-  background-color: #ddd;
-}

@@ -1,11 +1,9 @@
 import './App.css';
-import { useMoisture, useRecentMoisture} from "./useMoisture";
-import {SensorValues} from "./table/sensorValues";
+import { useRecentMoisture} from "./useMoisture";
+import {SensorTable} from "./table/sensorTable";
 
 export default function App() {
 
-  const {data: sensor_1} = useMoisture(1)
-  const {data: sensor_2} = useMoisture(2)
   const {data} = useRecentMoisture()
 
   const calculateColor = (moisture: number) => {
@@ -42,30 +40,8 @@ export default function App() {
         ))}
       </div>
 
-      <table className='moisture-table'>
-        <thead>
-        <tr>
-          <th colSpan={3}>
-            Recent moisture measurements
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <th>
-            Sensor
-          </th>
-          <th>
-            Moisture percentage
-          </th>
-          <th>
-            Updated at
-          </th>
-        </tr>
-            <SensorValues sensorValues={sensor_1}/>
-            <SensorValues sensorValues={sensor_2}/>
-        </tbody>
-      </table>
+     <SensorTable sensorId={1}/>
+      <SensorTable sensorId={2}/>
     </div>
   );
 }
