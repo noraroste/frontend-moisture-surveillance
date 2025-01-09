@@ -11,13 +11,28 @@ export function SensorValues({
     })
     .slice(0, 10);
 
+  function formatDateString(dateString: string): string {
+    const date = new Date(dateString);
+    const formattedDate = date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+    const formattedTime = date.toLocaleTimeString('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+    });
+    return `${formattedDate} at ${formattedTime}`;
+  }
+
   return (
     <>
       {sortedAndSliced?.map((moisture) => (
-        <tr>
+        <tr key={moisture.updatedAt}>
           <td>{moisture.sensorId}</td>
           <td>{moisture.moisturePercentage}</td>
-          <td>{moisture.updatedAt}</td>
+          <td>{formatDateString(moisture.updatedAt)}</td>
         </tr>
       ))}
     </>
