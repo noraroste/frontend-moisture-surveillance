@@ -13,14 +13,13 @@
   color: white;
 }
 
-.recent-moisture{
+.recent-moisture {
   display: flex;
   flex-direction: row;
-  align-items:center;
+  align-items: center;
   justify-content: center;
-
 }
-.recent-moisture__sensor-status{
+.recent-moisture__sensor-status {
   width: 20px;
   height: 20px;
   margin-right: 10px;
