@@ -9,6 +9,7 @@ export default function App() {
       <Header />
       <h2>Current moisture levels</h2>
       <RecentSensorValueList />
+      <SensorTable sensorId={0} />
       <SensorTable sensorId={1} />
       <SensorTable sensorId={2} />
     </div>
