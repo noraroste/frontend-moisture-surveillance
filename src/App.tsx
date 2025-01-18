@@ -1,7 +1,7 @@
 import './App.css';
-import { SensorTable } from './table/sensorTable';
 import { Header } from './header';
 import { RecentSensorValueList } from './recentSensorValueList';
+import { SensorGraph } from './SensorGraph';
 
 export default function App() {
   return (
@@ -9,9 +9,9 @@ export default function App() {
       <Header />
       <h2>Current moisture levels</h2>
       <RecentSensorValueList />
-      <SensorTable sensorId={0} />
-      <SensorTable sensorId={1} />
-      <SensorTable sensorId={2} />
+      <SensorGraph sensorId={0} />
+      <SensorGraph sensorId={1} />
+      <SensorGraph sensorId={2} />
     </div>
   );
 }
