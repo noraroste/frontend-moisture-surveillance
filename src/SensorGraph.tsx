@@ -21,14 +21,23 @@ export const SensorGraph: React.FC<SensorGraphProps> = ({ sensorId }) => {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading data</div>;
 
+  // Convert updatedAt to timestamp for proper time scale visualization
+  const formattedData = data.map((item) => ({
+    ...item,
+    updatedAt: new Date(item.updatedAt).getTime(),
+  }));
+
   return (
     <div>
       <h3>{getPlantName(sensorId)}</h3>
       <ResponsiveContainer width="100%" height={400}>
-        <LineChart data={data}>
+        <LineChart data={formattedData}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             dataKey="updatedAt"
+            type="number"
+            scale="time"
+            domain={['auto', 'auto']}
             tickFormatter={(tick) => {
               return new Date(tick).toLocaleString();
             }}
