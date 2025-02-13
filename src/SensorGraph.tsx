@@ -14,11 +14,14 @@ import { getPlantName } from './sensorMapping';
 
 interface SensorGraphProps {
   sensorId: number;
+  apiKey: string | null;
 }
 
-export const SensorGraph: React.FC<SensorGraphProps> = ({ sensorId }) => {
-  const { data, isLoading, error } = useMoisture(sensorId);
-  console.log({ data });
+export const SensorGraph: React.FC<SensorGraphProps> = ({
+  sensorId,
+  apiKey,
+}) => {
+  const { data, isLoading, error } = useMoisture(sensorId, apiKey);
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading data</div>;
   const sortedData = data.sort((a, b) => {

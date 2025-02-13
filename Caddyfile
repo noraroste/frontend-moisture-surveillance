@@ -29,6 +29,11 @@
 	# enable gzipping responses
 	encode gzip
 
+  # set custom header with environment variable
+  header {
+    X-Railway-Variable {env.API-TOKEN}
+  }
+
 	# serve files from 'build'
 	file_server
 

@@ -8,13 +8,17 @@ export interface SensorMoisture {
 
 const apiUrl = 'https://moisture-surveillance-production.up.railway.app';
 
-export function useMoisture(sensor: number): UseQueryResult<SensorMoisture[]> {
+export function useMoisture(
+  sensor: number,
+  apiKey: string | null
+): UseQueryResult<SensorMoisture[]> {
   const MOISTURE_URL = `${apiUrl}/moisture?sensorId=${sensor}`;
   return useQuery({
     queryKey: ['moisture', sensor],
     queryFn: async () => {
       const response = await fetch(MOISTURE_URL, {
         headers: {
+          Authorization: `Bearer ${apiKey}`,
           Accept: 'application/json',
           'Content-Type': 'application/json',
         },
