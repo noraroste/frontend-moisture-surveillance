@@ -18,11 +18,14 @@ interface SensorGraphProps {
 
 export const SensorGraph: React.FC<SensorGraphProps> = ({ sensorId }) => {
   const { data, isLoading, error } = useMoisture(sensorId);
+  console.log({ data });
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading data</div>;
-
+  const sortedData = data.sort((a, b) => {
+    return new Date(a.updatedAt).getTime() - new Date(b.updatedAt).getTime();
+  });
   // Convert updatedAt to timestamp for proper time scale visualization
-  const formattedData = data.map((item) => ({
+  const formattedData = sortedData.map((item) => ({
     ...item,
     updatedAt: new Date(item.updatedAt).getTime(),
   }));
