@@ -4,17 +4,12 @@ import { RecentSensorValueList } from './recentSensorValueList';
 import { SensorGraph } from './SensorGraph';
 import { useEffect, useState } from 'react';
 
-async function fetchRailwayVariable() {
-  const response = await fetch(window.location.href);
-  const railwayVariable = response.headers.get('X-Railway-Variable');
-  return railwayVariable;
-}
-
 export default function App() {
   const [apiKey, setApiKey] = useState<string | null>(null);
 
   useEffect(() => {
-    fetchRailwayVariable().then(setApiKey);
+    const apiKey = process.env.REACT_APP_API_KEY || null;
+    setApiKey(apiKey);
   }, []);
   return (
     <div className="App">
