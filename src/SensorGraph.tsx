@@ -44,7 +44,7 @@ export const SensorGraph: React.FC<SensorGraphProps> = ({ sensorId }) => {
               return new Date(tick).toLocaleString();
             }}
           />
-          <YAxis />
+          <YAxis domain={[0, 100]} />
           <Tooltip
             labelFormatter={(label) => new Date(label).toLocaleString()}
           />
