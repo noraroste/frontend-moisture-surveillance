@@ -5,9 +5,9 @@ export function RecentSensorValueList() {
   const { data } = useRecentMoisture();
 
   const calculateColor = (moisture: number) => {
-    if (moisture < 10) {
+    if (moisture < 20) {
       return 'red';
-    } else if (moisture < 50) {
+    } else if (moisture < 40) {
       return 'yellow';
     } else {
       return 'green';
