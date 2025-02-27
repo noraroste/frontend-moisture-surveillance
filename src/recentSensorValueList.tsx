@@ -1,7 +1,7 @@
 import { useRecentMoisture } from './useMoisture';
-import { getPlantName } from './sensorMapping';
+import { getLocation, getPlantName } from './sensorMapping';
 
-export function RecentSensorValueList() {
+export function RecentSensorValueList({ location }: { location: string }) {
   const { data } = useRecentMoisture();
 
   const calculateColor = (moisture: number) => {
@@ -39,21 +39,25 @@ export function RecentSensorValueList() {
 
   return (
     <div>
-      {data?.map((moisture, index) => (
-        <div className="recent-moisture" key={index} style={{}}>
-          <div
-            className="recent-moisture__sensor-status"
-            style={{
-              backgroundColor: calculateColor(moisture.moisturePercentage),
-            }}
-          ></div>
-          <p>
-            {getPlantName(moisture.sensorId)} has a moisture level of{' '}
-            {moisture.moisturePercentage}%, updated{' '}
-            {timeSince(moisture.updatedAt)}
-          </p>
-        </div>
-      ))}
+      {data?.map(
+        (moisture, index) =>
+          (location === getLocation(moisture.sensorId) ||
+            location === 'Begge') && (
+            <div className="recent-moisture" key={index} style={{}}>
+              <div
+                className="recent-moisture__sensor-status"
+                style={{
+                  backgroundColor: calculateColor(moisture.moisturePercentage),
+                }}
+              ></div>
+              <p>
+                {getPlantName(moisture.sensorId)} has a moisture level of{' '}
+                {moisture.moisturePercentage}%, updated{' '}
+                {timeSince(moisture.updatedAt)}
+              </p>
+            </div>
+          )
+      )}
     </div>
   );
 }

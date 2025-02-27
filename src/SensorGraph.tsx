@@ -10,14 +10,23 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import { useMoisture } from './useMoisture';
-import { getPlantName } from './sensorMapping';
+import { getLocation, getPlantName } from './sensorMapping';
+
+export type PlantLocation = 'Hjemme' | 'Kontoret' | 'Begge';
 
 interface SensorGraphProps {
   sensorId: number;
+  filterLocation?: PlantLocation;
 }
 
-export const SensorGraph: React.FC<SensorGraphProps> = ({ sensorId }) => {
+export const SensorGraph: React.FC<SensorGraphProps> = ({
+  sensorId,
+  filterLocation,
+}) => {
   const { data, isLoading, error } = useMoisture(sensorId);
+  if (getLocation(sensorId) !== filterLocation && filterLocation !== 'Begge') {
+    return null;
+  }
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading data</div>;
   const sortedData = data.sort((a, b) => {
