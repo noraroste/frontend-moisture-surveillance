@@ -11,19 +11,6 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.recent-moisture {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-.recent-moisture__sensor-status {
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-  margin-left: 10px;
-  border-radius: 50%;
-  flex-shrink: 0;
+  padding: 20px;
+  margin-bottom: 20px;
 }

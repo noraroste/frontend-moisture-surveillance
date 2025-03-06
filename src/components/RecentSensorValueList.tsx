@@ -10,6 +10,7 @@ import {
   secondsAgo,
   yearsAgo,
 } from '../utils/texts';
+import './recentSensorValueList.css';
 
 export function RecentSensorValueList({ location }: { location: string }) {
   const { data } = useRecentMoisture();

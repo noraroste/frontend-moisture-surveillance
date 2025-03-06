@@ -1,12 +1,13 @@
 import './App.css';
 import { Header } from './components/header';
-import { RecentSensorValueList } from './components/recentSensorValueList';
+import { RecentSensorValueList } from './components/RecentSensorValueList';
 import { SensorGraph } from './components/SensorGraph';
 import { useState } from 'react';
 import { PlantLocation } from './utils/types';
 import { LocationButtons } from './components/LocationButtons';
 import { capitalizeFirstLetter } from './utils/utilFunctions';
 import { headingRecentValuesText } from './utils/texts';
+import { ShowGraphButton } from './components/ShowGraphButton';
 
 export default function App() {
   const sensorIds = [0, 1, 2, 100, 101, 102, 103, 104];
@@ -16,6 +17,7 @@ export default function App() {
   const initialLocation = !urlLocation ? PlantLocation.Begge : urlLocation;
 
   const [location, setLocation] = useState<PlantLocation>(initialLocation);
+  const [showGraph, setShowGraph] = useState(false);
 
   const locationText =
     location === PlantLocation.Begge
@@ -34,13 +36,19 @@ export default function App() {
 
       <RecentSensorValueList location={location} />
 
-      {sensorIds.map((sensorId) => (
-        <SensorGraph
-          key={sensorId}
-          sensorId={sensorId}
-          filterLocation={location}
-        />
-      ))}
+      <ShowGraphButton
+        onClick={() => setShowGraph(!showGraph)}
+        showGraph={showGraph}
+      />
+
+      {showGraph &&
+        sensorIds.map((sensorId) => (
+          <SensorGraph
+            key={sensorId}
+            sensorId={sensorId}
+            filterLocation={location}
+          />
+        ))}
     </div>
   );
 }

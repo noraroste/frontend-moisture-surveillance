@@ -12,3 +12,5 @@ export const daysAgo = 'dager siden';
 export const hoursAgo = 'timer siden';
 export const minutesAgo = 'minutter siden';
 export const secondsAgo = 'sekunder siden';
+export const showGraphText = 'Vis grafer';
+export const hideGraphText = 'Skjul grafer';
