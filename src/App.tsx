@@ -5,18 +5,32 @@ import { SensorGraph } from './components/SensorGraph';
 import { useState } from 'react';
 import { PlantLocation } from './utils/types';
 import { LocationButtons } from './components/LocationButtons';
+import { capitalizeFirstLetter } from './utils/utilFunctions';
+import { headingRecentValuesText } from './utils/texts';
 
 export default function App() {
   const sensorIds = [0, 1, 2, 100, 101, 102, 103, 104];
+
   const params = new URLSearchParams(window.location.search);
-  const initialLocation = params.get('location') as PlantLocation;
+  const urlLocation = params.get('location') as PlantLocation;
+  const initialLocation = !urlLocation ? PlantLocation.Begge : urlLocation;
+
   const [location, setLocation] = useState<PlantLocation>(initialLocation);
+
+  const locationText =
+    location === PlantLocation.Begge
+      ? ''
+      : ` - ${capitalizeFirstLetter(location)}`;
+
   return (
     <div className="App">
       <Header />
+
       <LocationButtons setLocation={setLocation} location={location} />
 
-      <h2>Nåværende fuktighetsnivåer - {location}</h2>
+      <h2>
+        {headingRecentValuesText} {locationText}
+      </h2>
 
       <RecentSensorValueList location={location} />
 
