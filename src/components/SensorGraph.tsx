@@ -9,10 +9,9 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts';
-import { useMoisture } from './useMoisture';
-import { getLocation, getPlantName } from './sensorMapping';
-
-export type PlantLocation = 'Hjemme' | 'Kontoret' | 'Begge';
+import { useMoisture } from '../hooks/useMoisture';
+import { getLocation, getPlantName } from '../utils/sensorMapping';
+import { PlantLocation } from '../utils/types';
 
 interface SensorGraphProps {
   sensorId: number;

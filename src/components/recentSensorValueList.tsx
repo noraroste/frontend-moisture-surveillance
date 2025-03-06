@@ -1,5 +1,5 @@
-import { useRecentMoisture } from './useMoisture';
-import { getLocation, getPlantName } from './sensorMapping';
+import { useRecentMoisture } from '../hooks/useMoisture';
+import { getLocation, getPlantName } from '../utils/sensorMapping';
 
 export function RecentSensorValueList({ location }: { location: string }) {
   const { data } = useRecentMoisture();
