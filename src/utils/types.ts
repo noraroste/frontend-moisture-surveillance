@@ -1,5 +1,5 @@
 export enum PlantLocation {
-  Hjemme = 'Hjemme',
-  Kontoret = 'Kontoret',
-  Begge = 'Begge',
+  Hjemme = 'hjemme',
+  Kontoret = 'kontoret',
+  Begge = 'begge',
 }

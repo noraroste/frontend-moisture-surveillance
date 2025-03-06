@@ -23,7 +23,10 @@ export const SensorGraph: React.FC<SensorGraphProps> = ({
   filterLocation,
 }) => {
   const { data, isLoading, error } = useMoisture(sensorId);
-  if (getLocation(sensorId) !== filterLocation && filterLocation !== 'Begge') {
+  if (
+    getLocation(sensorId) !== filterLocation &&
+    filterLocation !== PlantLocation.Begge
+  ) {
     return null;
   }
   if (isLoading) return <div>Loading...</div>;

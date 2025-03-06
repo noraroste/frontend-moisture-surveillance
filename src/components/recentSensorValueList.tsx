@@ -1,5 +1,6 @@
 import { useRecentMoisture } from '../hooks/useMoisture';
 import { getLocation, getPlantName } from '../utils/sensorMapping';
+import { PlantLocation } from '../utils/types';
 
 export function RecentSensorValueList({ location }: { location: string }) {
   const { data } = useRecentMoisture();
@@ -42,7 +43,7 @@ export function RecentSensorValueList({ location }: { location: string }) {
       {data?.map(
         (moisture, index) =>
           (location === getLocation(moisture.sensorId) ||
-            location === 'Begge') && (
+            location === PlantLocation.Begge) && (
             <div className="recent-moisture" key={index} style={{}}>
               <div
                 className="recent-moisture__sensor-status"

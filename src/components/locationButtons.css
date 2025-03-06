@@ -1,0 +1,6 @@
+.location-button{
+
+}
+.location-button__selected{
+    border-color: red;
+}
