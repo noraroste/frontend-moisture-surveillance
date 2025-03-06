@@ -1,6 +1,15 @@
 import { useRecentMoisture } from '../hooks/useMoisture';
 import { getLocation, getPlantName } from '../utils/sensorMapping';
 import { PlantLocation } from '../utils/types';
+import {
+  daysAgo,
+  hoursAgo,
+  minutesAgo,
+  monthsAgo,
+  recentValuesText,
+  secondsAgo,
+  yearsAgo,
+} from '../utils/texts';
 
 export function RecentSensorValueList({ location }: { location: string }) {
   const { data } = useRecentMoisture();
@@ -21,21 +30,21 @@ export function RecentSensorValueList({ location }: { location: string }) {
     const seconds = Math.floor((now.getTime() - past.getTime()) / 1000);
 
     let interval = Math.floor(seconds / 31536000);
-    if (interval > 1) return `${interval} years ago`;
+    if (interval > 1) return `${interval} ${yearsAgo}`;
 
     interval = Math.floor(seconds / 2592000);
-    if (interval > 1) return `${interval} months ago`;
+    if (interval > 1) return `${interval} ${monthsAgo}`;
 
     interval = Math.floor(seconds / 86400);
-    if (interval > 1) return `${interval} days ago`;
+    if (interval > 1) return `${interval} ${daysAgo}`;
 
     interval = Math.floor(seconds / 3600);
-    if (interval > 1) return `${interval} hours ago`;
+    if (interval > 1) return `${interval} ${hoursAgo}`;
 
     interval = Math.floor(seconds / 60);
-    if (interval > 1) return `${interval} minutes ago`;
+    if (interval > 1) return `${interval} ${minutesAgo}`;
 
-    return `${Math.floor(seconds)} seconds ago`;
+    return `${Math.floor(seconds)} ${secondsAgo}`;
   }
 
   return (
@@ -52,9 +61,11 @@ export function RecentSensorValueList({ location }: { location: string }) {
                 }}
               ></div>
               <p>
-                {getPlantName(moisture.sensorId)} has a moisture level of{' '}
-                {moisture.moisturePercentage}%, updated{' '}
-                {timeSince(moisture.updatedAt)}
+                {recentValuesText(
+                  getPlantName(moisture.sensorId),
+                  moisture.moisturePercentage,
+                  timeSince(moisture.updatedAt)
+                )}
               </p>
             </div>
           )
