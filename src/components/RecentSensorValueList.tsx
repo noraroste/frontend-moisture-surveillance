@@ -1,5 +1,9 @@
 import { useRecentMoisture } from '../hooks/useMoisture';
-import { getLocation, getPlantName } from '../utils/sensorMapping';
+import {
+  getLocation,
+  getPlantName,
+  getPlantType,
+} from '../utils/sensorMapping';
 import { PlantLocation } from '../utils/types';
 import {
   daysAgo,
@@ -11,6 +15,7 @@ import {
   yearsAgo,
 } from '../utils/texts';
 import './recentSensorValueList.css';
+import { InfoButton } from './InfoModal';
 
 export function RecentSensorValueList({ location }: { location: string }) {
   const { data } = useRecentMoisture();
@@ -61,12 +66,13 @@ export function RecentSensorValueList({ location }: { location: string }) {
                   backgroundColor: calculateColor(moisture.moisturePercentage),
                 }}
               ></div>
-              <p>
+              <p className={'recent-moisture__text'}>
                 {recentValuesText(
                   getPlantName(moisture.sensorId),
                   moisture.moisturePercentage,
                   timeSince(moisture.updatedAt)
                 )}
+                <InfoButton plantType={getPlantType(moisture.sensorId)} />
               </p>
             </div>
           )

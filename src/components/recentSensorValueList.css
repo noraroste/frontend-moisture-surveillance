@@ -15,3 +15,7 @@
     border-radius: 50%;
     flex-shrink: 0;
 }
+.recent-moisture__text{
+    display: flex;
+    align-items: center;
+}
