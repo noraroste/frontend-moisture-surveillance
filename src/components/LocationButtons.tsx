@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction } from 'react';
 import { PlantLocation } from '../utils/types';
 import './locationButtons.css';
+import { capitalizeFirstLetter } from '../utils/utilFunctions';
 
 export const LocationButtons = ({
   setLocation,
@@ -23,24 +24,40 @@ export const LocationButtons = ({
   }
   return (
     <div>
-      <button
-        className={`location-button${location === PlantLocation.Hjemme ? '__selected' : ''}`}
-        onClick={() => onClick(PlantLocation.Hjemme)}
-      >
-        Hjemme
-      </button>
-      <button
-        className={`location-button${location === PlantLocation.Kontoret ? '__selected' : ''}`}
-        onClick={() => onClick(PlantLocation.Kontoret)}
-      >
-        Kontoret
-      </button>
-      <button
-        className={`location-button${location === PlantLocation.Begge ? '__selected' : ''}`}
-        onClick={() => onClick(PlantLocation.Begge)}
-      >
-        Begge
-      </button>
+      <LocationButton
+        buttonLocation={PlantLocation.Hjemme}
+        location={location}
+        onClick={onClick}
+      />
+      <LocationButton
+        buttonLocation={PlantLocation.Kontoret}
+        location={location}
+        onClick={onClick}
+      />
+      <LocationButton
+        buttonLocation={PlantLocation.Begge}
+        location={location}
+        onClick={onClick}
+      />
     </div>
+  );
+};
+
+const LocationButton = ({
+  buttonLocation,
+  location,
+  onClick,
+}: {
+  buttonLocation: PlantLocation;
+  location: PlantLocation;
+  onClick: (location: PlantLocation) => void;
+}) => {
+  return (
+    <button
+      className={`location-button${location === buttonLocation ? '__selected' : ''}`}
+      onClick={() => onClick(buttonLocation)}
+    >
+      {capitalizeFirstLetter(buttonLocation)}
+    </button>
   );
 };
