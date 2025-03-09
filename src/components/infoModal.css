@@ -27,6 +27,7 @@
     max-height: 300px;
 }
 .info-button {
+    color: black;
     background: none;
     border: none;
     cursor: pointer;
