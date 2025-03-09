@@ -52,10 +52,13 @@ export function RecentSensorValueList({ location }: { location: string }) {
 
     return `${Math.floor(seconds)} ${secondsAgo}`;
   }
+  const sortedData = data?.sort(
+    (a, b) => a.moisturePercentage - b.moisturePercentage
+  );
 
   return (
     <div>
-      {data?.map(
+      {sortedData?.map(
         (moisture, index) =>
           (location === getLocation(moisture.sensorId) ||
             location === PlantLocation.Begge) && (
