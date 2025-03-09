@@ -66,14 +66,17 @@ export function RecentSensorValueList({ location }: { location: string }) {
                   backgroundColor: calculateColor(moisture.moisturePercentage),
                 }}
               ></div>
-              <p className={'recent-moisture__text'}>
-                {recentValuesText(
-                  getPlantName(moisture.sensorId),
-                  moisture.moisturePercentage,
-                  timeSince(moisture.updatedAt)
-                )}
+              <div className={'recent-moisture__text'}>
+                <p>
+                  {recentValuesText(
+                    getPlantName(moisture.sensorId),
+                    moisture.moisturePercentage,
+                    timeSince(moisture.updatedAt)
+                  )}
+                </p>
+
                 <InfoButton plantType={getPlantType(moisture.sensorId)} />
-              </p>
+              </div>
             </div>
           )
       )}

@@ -20,7 +20,7 @@ export function InfoModal({
   return (
     <div className="modal-overlay" onClick={handleOverlayClick}>
       <div className="modal-content">
-        <h2>{plantType}</h2>
+        <h2 className="modal-heading">{plantType}</h2>
         <img
           src={plantInfo.imagePath}
           alt={plantType}

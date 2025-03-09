@@ -61,19 +61,19 @@ export const plantTips: { [key: string]: { tip: string; imagePath: string } } =
   {
     Monstera: {
       tip: 'Monstera trenger lite vann, og la den tørke opp mellom hver vanning. Vann gjerne med romtemperert vann.',
-      imagePath: 'monstera.jpg',
+      imagePath: '/images/monstera.jpg',
     },
     'Monstera Minima': {
       tip: 'La den tørke opp litt mellom hver vanning. Liker å få bladene dusjet.',
-      imagePath: 'monstera-minima.jpg',
+      imagePath: '/images/monstera-minima.jpeg',
     },
     'Fiolin Fiken': {
       tip: 'Vann fiolinfiken jevnlig, men la jorden tørke ut mellom vanningene. Overvanning kan føre til rotråte, så pass på at røttene ikke blir stående i vann over tid. En god tommelfingerregel er å vanne når de øverste 2-3 centimeterne av jorden er tørre.',
-      imagePath: 'kjh',
+      imagePath: '/images/fiolinfiken.jpg',
     },
     'Begonia Maculata': {
       tip: 'Hold jorden jevnt fuktig, men ikke våt. Vann når øverste 2-3 cm er tørr.',
-      imagePath: 'uihlkj',
+      imagePath: '/images/begonia-maculata.jpeg',
     },
     // Add more plant types and tips as needed
   };
