@@ -4,19 +4,34 @@ const sensorNameMap: {
   [key: number]: { name: string; location: string; plantType: string };
 } = {
   0: {
-    name: 'Liten monstera',
+    name: 'Chilli 0',
     location: PlantLocation.Hjemme,
-    plantType: 'Monstera',
+    plantType: 'Chilli',
   },
   1: {
-    name: 'Stor monstera',
+    name: 'Monstera',
     location: PlantLocation.Hjemme,
     plantType: 'Monstera',
   },
   2: {
-    name: 'Monstera minima',
+    name: 'Chilli 1',
     location: PlantLocation.Hjemme,
-    plantType: 'Monstera Minima',
+    plantType: 'Chilli',
+  },
+  3: {
+    name: 'Chilli 2',
+    location: PlantLocation.Hjemme,
+    plantType: 'Chilli',
+  },
+  4: {
+    name: 'Chilli 3',
+    location: PlantLocation.Hjemme,
+    plantType: 'Chilli',
+  },
+  5: {
+    name: 'Stor Monstera',
+    location: PlantLocation.Hjemme,
+    plantType: 'Monstera',
   },
   100: {
     name: 'Fiolin fiken 1',
