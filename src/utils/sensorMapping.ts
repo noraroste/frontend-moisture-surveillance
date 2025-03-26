@@ -64,13 +64,13 @@ const sensorNameMap: {
 
 // Function to get the readable name for a sensor ID
 export function getPlantName(sensorId: number): string {
-  return sensorNameMap[sensorId].name || `Sensor ${sensorId}`;
+  return sensorNameMap[sensorId]?.name || `Sensor ${sensorId}`;
 }
 export function getLocation(sensorId: number): string {
-  return sensorNameMap[sensorId].location;
+  return sensorNameMap[sensorId]?.location || 'Ukjent';
 }
 export function getPlantType(sensorId: number): string {
-  return sensorNameMap[sensorId].plantType;
+  return sensorNameMap[sensorId]?.plantType || 'Ukjent';
 }
 export const plantTips: { [key: string]: { tip: string; imagePath: string } } =
   {
