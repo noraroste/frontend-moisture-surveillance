@@ -3,14 +3,26 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: var(--ffe-color-background-default);
+  color: var(--ffe-color-foreground-default);
   min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
-  padding: 20px;
+  padding-top: var(--ffe-spacing-xl);
   margin-bottom: 20px;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--ffe-spacing-xl);
+}
+
+.main-content__tab-content {
+  margin-top: var(--ffe-spacing-md);
 }

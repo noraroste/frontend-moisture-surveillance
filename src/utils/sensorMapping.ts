@@ -90,5 +90,9 @@ export const plantTips: { [key: string]: { tip: string; imagePath: string } } =
       tip: 'Hold jorden jevnt fuktig, men ikke våt. Vann når øverste 2-3 cm er tørr.',
       imagePath: '/images/begonia-maculata.jpeg',
     },
+    Chilli: {
+      tip: 'Chili liker å tørke ut mellom vanningene. Vann når jorden er tørr på toppen.',
+      imagePath: '/images/chilli.avif',
+    },
     // Add more plant types and tips as needed
   };
