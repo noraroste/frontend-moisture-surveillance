@@ -1,34 +1,24 @@
 import React from 'react';
 import {
-  LineChart,
+  CartesianGrid,
+  Legend,
   Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
 } from 'recharts';
 import { useMoisture } from '../hooks/useMoisture';
-import { getLocation, getPlantName } from '../utils/sensorMapping';
-import { PlantLocation } from '../utils/types';
 
 interface SensorGraphProps {
   sensorId: number;
-  filterLocation?: PlantLocation;
 }
 
 export const SensorGraph: React.FC<SensorGraphProps> = ({
   sensorId,
-  filterLocation,
 }) => {
   const { data, isLoading, error } = useMoisture(sensorId);
-  if (
-    getLocation(sensorId) !== filterLocation &&
-    filterLocation !== PlantLocation.Begge
-  ) {
-    return null;
-  }
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading data</div>;
   const sortedData = data.sort((a, b) => {
@@ -42,7 +32,6 @@ export const SensorGraph: React.FC<SensorGraphProps> = ({
 
   return (
     <div>
-      <h3>{getPlantName(sensorId)}</h3>
       <ResponsiveContainer width="100%" height={400}>
         <LineChart data={formattedData}>
           <CartesianGrid strokeDasharray="3 3" />

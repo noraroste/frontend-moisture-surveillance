@@ -1,10 +1,14 @@
+import { SecondaryButton } from '@sb1/ffe-buttons-react';
+import { Heading2, Paragraph } from '@sb1/ffe-core-react';
+import { Modal, ModalBlock, ModalHandle } from '@sb1/ffe-modals-react';
+import { useRef } from 'react';
 import { useRecentMoisture } from '../hooks/useMoisture';
 import {
   getLocation,
   getPlantName,
   getPlantType,
+  plantTips,
 } from '../utils/sensorMapping';
-import { PlantLocation } from '../utils/types';
 import {
   daysAgo,
   hoursAgo,
@@ -14,19 +18,22 @@ import {
   secondsAgo,
   yearsAgo,
 } from '../utils/texts';
+import { PlantLocation, StatusColors } from '../utils/types';
+import RecentSensorValueCard from './RecentSensorValueCard';
 import './recentSensorValueList.css';
-import { InfoButton } from './InfoModal';
+import { SensorGraph } from './SensorGraph';
 
 export function RecentSensorValueList({ location }: { location: string }) {
+  const modalRef = useRef<ModalHandle>(null);
   const { data } = useRecentMoisture();
 
-  const calculateColor = (moisture: number) => {
+  const calculateColor = (moisture: number): StatusColors => {
     if (moisture < 20) {
-      return 'red';
+      return StatusColors.Danger;
     } else if (moisture < 40) {
-      return 'yellow';
+      return StatusColors.Warning;
     } else {
-      return 'green';
+      return StatusColors.Good;
     }
   };
 
@@ -57,30 +64,44 @@ export function RecentSensorValueList({ location }: { location: string }) {
   );
 
   return (
-    <div>
+    <div className='recent-moisture-list'>
       {sortedData?.map(
         (moisture, index) =>
           (location === getLocation(moisture.sensorId) ||
             location === PlantLocation.Begge) && (
-            <div className="recent-moisture" key={index} style={{}}>
-              <div
-                className="recent-moisture__sensor-status"
-                style={{
-                  backgroundColor: calculateColor(moisture.moisturePercentage),
-                }}
-              ></div>
-              <div className={'recent-moisture__text'}>
-                <p>
-                  {recentValuesText(
-                    getPlantName(moisture.sensorId),
-                    moisture.moisturePercentage,
-                    timeSince(moisture.updatedAt)
-                  )}
-                </p>
+            <RecentSensorValueCard
+              imageSrc={plantTips[getPlantType(moisture.sensorId)]?.imagePath}
+              status={calculateColor(moisture.moisturePercentage)}
+              key={index}
+              title={getPlantName(moisture.sensorId)}
+              subtext={timeSince(moisture.updatedAt)}
+              description={recentValuesText(getPlantName(moisture.sensorId), moisture.moisturePercentage)}>
 
-                <InfoButton plantType={getPlantType(moisture.sensorId)} />
-              </div>
-            </div>
+              <SecondaryButton className='moisture-card-button'
+                onClick={() => {
+                  modalRef.current?.open();
+                }}>
+                Se graf
+              </SecondaryButton>
+              <Modal
+                ariaLabelledby='modal-title'
+                ref={modalRef}
+                className="moisture-card-modal"
+              >
+                <ModalBlock>
+                  <Heading2 id='modal-title'>
+                    {getPlantName(moisture.sensorId)}
+                  </Heading2>
+                  <Paragraph>
+                    Her er fuktighetsnivåene til {getPlantName(moisture.sensorId)} de siste tiden.
+                  </Paragraph>
+                  <SensorGraph
+                    key={index}
+                    sensorId={moisture.sensorId}
+                  />
+                </ModalBlock>
+              </Modal>
+            </RecentSensorValueCard>
           )
       )}
     </div>

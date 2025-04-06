@@ -1,13 +1,12 @@
+import { Heading2 } from '@sb1/ffe-core-react';
+import { useState } from 'react';
 import './App.css';
 import { Header } from './components/header';
-import { RecentSensorValueList } from './components/RecentSensorValueList';
-import { SensorGraph } from './components/SensorGraph';
-import { useState } from 'react';
-import { PlantLocation } from './utils/types';
 import { LocationButtons } from './components/LocationButtons';
-import { capitalizeFirstLetter } from './utils/utilFunctions';
+import { RecentSensorValueList } from './components/RecentSensorValueList';
 import { headingRecentValuesText } from './utils/texts';
-import { ShowGraphButton } from './components/ShowGraphButton';
+import { PlantLocation } from './utils/types';
+import { capitalizeFirstLetter } from './utils/utilFunctions';
 
 export default function App() {
   const sensorIds = [0, 1, 2, 100, 101, 102, 103, 104];
@@ -27,28 +26,15 @@ export default function App() {
   return (
     <div className="App">
       <Header />
-
-      <LocationButtons setLocation={setLocation} location={location} />
-
-      <h2>
-        {headingRecentValuesText} {locationText}
-      </h2>
-
-      <RecentSensorValueList location={location} />
-
-      <ShowGraphButton
-        onClick={() => setShowGraph(!showGraph)}
-        showGraph={showGraph}
-      />
-
-      {showGraph &&
-        sensorIds.map((sensorId) => (
-          <SensorGraph
-            key={sensorId}
-            sensorId={sensorId}
-            filterLocation={location}
-          />
-        ))}
+      <div className='main-content'>
+        <LocationButtons setLocation={setLocation} location={location} />
+        <div className='main-content__tab-content'>
+          <Heading2 >
+            {headingRecentValuesText} {locationText}
+          </Heading2>
+          <RecentSensorValueList location={location} />
+        </div>
+      </div>
     </div>
   );
 }

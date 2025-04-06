@@ -1,11 +1,10 @@
-export const headerText = 'Velkommen til fuktighetsmåleren';
+export const headerText = 'Noras fuktighetsmåler';
 export const headingRecentValuesText = 'Siste fuktighetsnivåer';
 export const recentValuesText = (
   plantName: String,
   moisturePercentage: number,
-  timeSince: String
 ): string =>
-  ` ${plantName} har et fuktighetsnivå på ${moisturePercentage}%, oppdatert for ${timeSince}`;
+  ` ${plantName} har et fuktighetsnivå på ${moisturePercentage}%.`;
 export const yearsAgo = 'år siden';
 export const monthsAgo = 'måneder siden';
 export const daysAgo = 'dager siden';

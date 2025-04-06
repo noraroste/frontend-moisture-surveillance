@@ -1,7 +1,9 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, } from 'react';
 import { PlantLocation } from '../utils/types';
 import './locationButtons.css';
 import { capitalizeFirstLetter } from '../utils/utilFunctions';
+import { TabGroup, Tab } from '@sb1/ffe-tabs-react';
+
 
 export const LocationButtons = ({
   setLocation,
@@ -14,6 +16,7 @@ export const LocationButtons = ({
 
   function onClick(location: PlantLocation) {
     setLocation(location);
+
     params.set('location', location);
     const queryString = params.toString();
     window.history.replaceState(
@@ -24,40 +27,17 @@ export const LocationButtons = ({
   }
   return (
     <div>
-      <LocationButton
-        buttonLocation={PlantLocation.Hjemme}
-        location={location}
-        onClick={onClick}
-      />
-      <LocationButton
-        buttonLocation={PlantLocation.Kontoret}
-        location={location}
-        onClick={onClick}
-      />
-      <LocationButton
-        buttonLocation={PlantLocation.Begge}
-        location={location}
-        onClick={onClick}
-      />
+      <TabGroup>
+        <Tab selected={location === PlantLocation.Hjemme} onClick={() => onClick(PlantLocation.Hjemme)}>
+          {capitalizeFirstLetter(PlantLocation.Hjemme)}
+        </Tab>
+        <Tab selected={location === PlantLocation.Kontoret} onClick={() => onClick(PlantLocation.Kontoret)}>
+          {capitalizeFirstLetter(PlantLocation.Kontoret)}
+        </Tab>
+        <Tab selected={location === PlantLocation.Begge} onClick={() => onClick(PlantLocation.Begge)}>
+          {capitalizeFirstLetter(PlantLocation.Begge)}
+        </Tab>
+      </TabGroup>
     </div>
-  );
-};
-
-const LocationButton = ({
-  buttonLocation,
-  location,
-  onClick,
-}: {
-  buttonLocation: PlantLocation;
-  location: PlantLocation;
-  onClick: (location: PlantLocation) => void;
-}) => {
-  return (
-    <button
-      className={`location-button${location === buttonLocation ? '__selected' : ''}`}
-      onClick={() => onClick(buttonLocation)}
-    >
-      {capitalizeFirstLetter(buttonLocation)}
-    </button>
   );
 };

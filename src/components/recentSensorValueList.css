@@ -1,11 +1,9 @@
 
-.recent-moisture {
+.recent-moisture-list {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
-
-    margin: 8px 0;
+    gap: 20px;
 }
 .recent-moisture__sensor-status {
     width: 30px;
@@ -18,4 +16,28 @@
 .recent-moisture__text{
     display: flex;
     align-items: center;
+}
+
+.moisture-card .ffe-image-card__body {
+    text-align: left;
+}
+
+.moisture-card .ffe-image-card__body .ffe-card-body__text {
+    color: var(--ffe-color-foreground-default);
+}
+
+.moisture-status-message {
+    margin-top: var(--ffe-spacing-sm);
+}
+
+.moisture-card-button {
+    margin-block: var(--ffe-spacing-md);
+}
+
+.moisture-card-modal {
+    min-width: 80%;
+}
+
+.moisture-card-modal .ffe-modal__body {
+    max-width: none;
 }
