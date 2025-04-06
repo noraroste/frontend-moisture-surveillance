@@ -9,14 +9,11 @@ import { PlantLocation } from './utils/types';
 import { capitalizeFirstLetter } from './utils/utilFunctions';
 
 export default function App() {
-  const sensorIds = [0, 1, 2, 100, 101, 102, 103, 104];
-
   const params = new URLSearchParams(window.location.search);
   const urlLocation = params.get('location') as PlantLocation;
   const initialLocation = !urlLocation ? PlantLocation.Begge : urlLocation;
 
   const [location, setLocation] = useState<PlantLocation>(initialLocation);
-  const [showGraph, setShowGraph] = useState(false);
 
   const locationText =
     location === PlantLocation.Begge
@@ -26,10 +23,10 @@ export default function App() {
   return (
     <div className="App">
       <Header />
-      <div className='main-content'>
+      <div className="main-content">
         <LocationButtons setLocation={setLocation} location={location} />
-        <div className='main-content__tab-content'>
-          <Heading2 >
+        <div className="main-content__tab-content">
+          <Heading2>
             {headingRecentValuesText} {locationText}
           </Heading2>
           <RecentSensorValueList location={location} />
