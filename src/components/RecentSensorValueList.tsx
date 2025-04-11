@@ -1,7 +1,7 @@
 import { SecondaryButton } from '@sb1/ffe-buttons-react';
 import { Heading2, Paragraph } from '@sb1/ffe-core-react';
 import { Modal, ModalBlock, ModalHandle } from '@sb1/ffe-modals-react';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useRecentMoisture } from '../hooks/useMoisture';
 import {
   getLocation,
@@ -26,6 +26,7 @@ import { SensorGraph } from './SensorGraph';
 export function RecentSensorValueList({ location }: { location: string }) {
   const modalRef = useRef<ModalHandle>(null);
   const { data } = useRecentMoisture();
+  const [selectedSensorId, setSelectedSensorId] = useState<number | null>(null);
 
   const calculateColor = (moisture: number): StatusColors => {
     if (moisture < 20) {
@@ -64,7 +65,7 @@ export function RecentSensorValueList({ location }: { location: string }) {
   );
 
   return (
-    <div className='recent-moisture-list'>
+    <div className="recent-moisture-list">
       {sortedData?.map(
         (moisture, index) =>
           (location === getLocation(moisture.sensorId) ||
@@ -75,29 +76,39 @@ export function RecentSensorValueList({ location }: { location: string }) {
               key={index}
               title={getPlantName(moisture.sensorId)}
               subtext={timeSince(moisture.updatedAt)}
-              description={recentValuesText(getPlantName(moisture.sensorId), moisture.moisturePercentage)}>
-
-              <SecondaryButton className='moisture-card-button'
+              description={recentValuesText(
+                getPlantName(moisture.sensorId),
+                moisture.moisturePercentage
+              )}
+            >
+              <SecondaryButton
+                className="moisture-card-button"
                 onClick={() => {
+                  setSelectedSensorId(moisture.sensorId);
                   modalRef.current?.open();
-                }}>
+                }}
+              >
                 Se graf
               </SecondaryButton>
               <Modal
-                ariaLabelledby='modal-title'
+                ariaLabelledby="modal-title"
                 ref={modalRef}
                 className="moisture-card-modal"
               >
                 <ModalBlock>
-                  <Heading2 id='modal-title'>
-                    {getPlantName(moisture.sensorId)}
+                  <Heading2 id="modal-title">
+                    {selectedSensorId !== null &&
+                      getPlantName(selectedSensorId)}
                   </Heading2>
                   <Paragraph>
-                    Her er fuktighetsnivåene til {getPlantName(moisture.sensorId)} de siste tiden.
+                    Her er fuktighetsnivåene til{' '}
+                    {selectedSensorId !== null &&
+                      getPlantName(selectedSensorId)}{' '}
+                    de siste tiden.
                   </Paragraph>
                   <SensorGraph
-                    key={index}
-                    sensorId={moisture.sensorId}
+                    key={selectedSensorId}
+                    sensorId={selectedSensorId}
                   />
                 </ModalBlock>
               </Modal>
