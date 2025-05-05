@@ -33,6 +33,11 @@ const sensorNameMap: {
     location: PlantLocation.Hjemme,
     plantType: 'Monstera',
   },
+  6: {
+    name: 'Fiolin Fiken',
+    location: PlantLocation.Hjemme,
+    plantType: 'Fiolin Fiken',
+  },
   100: {
     name: 'Fiolin fiken 1',
     location: PlantLocation.Kontoret,

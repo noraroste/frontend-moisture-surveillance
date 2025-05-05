@@ -10,6 +10,9 @@ const apiUrl = 'https://moisture-surveillance-production.up.railway.app';
 const apiKey = process.env.REACT_APP_API_KEY || null;
 // const apiUrl = 'http://localhost:8080';
 export function useMoisture(sensor: number): UseQueryResult<SensorMoisture[]> {
+  if (sensor == null) {
+    throw new Error('Sensor ID is required');
+  }
   const MOISTURE_URL = `${apiUrl}/moisture?sensorId=${sensor}`;
   return useQuery({
     queryKey: ['moisture', sensor],

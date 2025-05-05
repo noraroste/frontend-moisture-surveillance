@@ -106,10 +106,12 @@ export function RecentSensorValueList({ location }: { location: string }) {
                       getPlantName(selectedSensorId)}{' '}
                     de siste tiden.
                   </Paragraph>
-                  <SensorGraph
-                    key={selectedSensorId}
-                    sensorId={selectedSensorId}
-                  />
+                  {selectedSensorId !== null && (
+                    <SensorGraph
+                      key={selectedSensorId}
+                      sensorId={selectedSensorId}
+                    />
+                  )}
                 </ModalBlock>
               </Modal>
             </RecentSensorValueCard>
