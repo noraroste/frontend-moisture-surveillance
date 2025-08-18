@@ -4,5 +4,10 @@
     "jsx": "react-jsx",
     // other options
   },
+  "exclude": [
+    "node_modules",
+    "build",
+    "dist"
+  ],
   "include": ["src"]
 }

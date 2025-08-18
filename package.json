@@ -33,6 +33,7 @@
     "dev": "NODE_NO_WARNINGS=1 react-scripts start",
     "build": "NODE_NO_WARNINGS=1 react-scripts build",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
+    "check-types": "tsc --noEmit --skipLibCheck",
     "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,md}\"",
     "prettier:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,css,scss,md}\""
   },
