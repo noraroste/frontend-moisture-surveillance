@@ -47,7 +47,6 @@ export function useRecentMoisture(): UseQueryResult<SensorMoisture[]> {
       const data: SensorMoisture[] = await response.json();
       return data.map((item) => ({
         ...item,
-        updatedAt: new Date(item.updatedAt),
       }));
     },
   });
