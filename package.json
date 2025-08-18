@@ -2,6 +2,7 @@
   "name": "create-react-app-starter",
   "version": "0.1.0",
   "dependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@sb1/ffe-buttons": "^21.3.1",
@@ -29,8 +30,8 @@
     "web-vitals": "^4.1.1"
   },
   "scripts": {
-    "dev": "react-scripts start",
-    "build": "react-scripts build",
+    "dev": "NODE_NO_WARNINGS=1 react-scripts start",
+    "build": "NODE_NO_WARNINGS=1 react-scripts build",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
     "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,md}\"",
     "prettier:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,css,scss,md}\""

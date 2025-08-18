@@ -4,9 +4,9 @@ const sensorNameMap: {
   [key: number]: { name: string; location: string; plantType: string };
 } = {
   0: {
-    name: 'Chilli 0',
+    name: 'Monstera adansonii',
     location: PlantLocation.Hjemme,
-    plantType: 'Chilli',
+    plantType: 'Monstera adansonii',
   },
   1: {
     name: 'Monstera',
@@ -14,19 +14,19 @@ const sensorNameMap: {
     plantType: 'Monstera',
   },
   2: {
-    name: 'Chilli 1',
+    name: 'Gullranke 2',
     location: PlantLocation.Hjemme,
-    plantType: 'Chilli',
+    plantType: 'Gullranke',
   },
   3: {
-    name: 'Chilli 2',
+    name: 'Begonia Rex',
     location: PlantLocation.Hjemme,
-    plantType: 'Chilli',
+    plantType: 'Begonia Rex',
   },
   4: {
-    name: 'Chilli 3',
+    name: 'Gullranke 4',
     location: PlantLocation.Hjemme,
-    plantType: 'Chilli',
+    plantType: 'Gullranke',
   },
   5: {
     name: 'Stor Monstera',
@@ -98,6 +98,18 @@ export const plantTips: { [key: string]: { tip: string; imagePath: string } } =
     Chilli: {
       tip: 'Chili liker å tørke ut mellom vanningene. Vann når jorden er tørr på toppen.',
       imagePath: '/images/chilli.avif',
+    },
+    Gullranke: {
+      tip: 'Gullranke foretrekker jevn fuktighet i jorda. La det øverste laget av jorda tørke ut før du vanner igjen. Unngå å la planten stå i vann, da kan det føre til råteskader på røttene.',
+      imagePath: '/images/Gullranke.jpeg',
+    },
+    'Begonia Rex': {
+      tip: 'Begonia Rex liker aller best å få vann på skåla, det vil si at den får trekke opp vann via røttene nedenfra. Da får planten sunnere røtter og finere bladverk. Dette kan du gjøre ved å fylle vann i bunnen av potteskjuleren og plassere den indre potta med Begoniaen oppi. Her suger røttene opp ønsket vannmengde. Etter omlag 20 minutter kan du sjekke om det er noe overflødig vann i bunn og eventuelt helle det ut. Sjekk ukentlig om jorden er tørr med fingrene og tilfør vann om potten kjennes lett når du løfter den.',
+      imagePath: '/images/begonia-rex.jpeg',
+    },
+    'Monstera adansonii': {
+      tip: 'Monstera adansonii liker å tørke ut mellom vanningene. Vann når jorden er tørr 2-3 cm ned i jorden.',
+      imagePath: '/images/monstera-adansonii.jpg',
     },
     // Add more plant types and tips as needed
   };
