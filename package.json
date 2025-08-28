@@ -21,8 +21,8 @@
     "@sb1/ffe-tabs-react": "^10.0.54",
     "@tanstack/react-query": "^5.85.5",
     "@tanstack/react-query-devtools": "^5.85.5",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
     "react-scripts": "5.0.1",
     "recharts": "^3.1.2"
   },
@@ -52,8 +52,8 @@
     ]
   },
   "devDependencies": {
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
     "prettier": "^3.6.2"
   }
 }
