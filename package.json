@@ -3,8 +3,6 @@
   "version": "0.1.0",
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@fortawesome/free-solid-svg-icons": "^6.7.2",
-    "@fortawesome/react-fontawesome": "^0.2.2",
     "@sb1/ffe-buttons": "^22.0.3",
     "@sb1/ffe-buttons-react": "^24.4.7",
     "@sb1/ffe-cards": "^24.0.3",
@@ -26,8 +24,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
-    "recharts": "^2.15.0",
-    "web-vitals": "^4.1.1"
+    "recharts": "^2.15.0"
   },
   "scripts": {
     "dev": "NODE_NO_WARNINGS=1 react-scripts start",

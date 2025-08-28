@@ -1,6 +1,3 @@
-import { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import './infoModal.css';
 import { plantTips } from '../utils/sensorMapping';
 
@@ -28,29 +25,6 @@ export function InfoModal({
         />
         <p>{plantInfo.tip}</p>
       </div>
-    </div>
-  );
-}
-
-export function InfoButton({ plantType }: { plantType: string }) {
-  const [showModal, setShowModal] = useState(false);
-
-  const handleButtonClick = () => {
-    setShowModal(true);
-  };
-
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
-
-  return (
-    <div>
-      <button className="info-button" onClick={handleButtonClick}>
-        <FontAwesomeIcon icon={faInfoCircle} />
-      </button>
-      {showModal && (
-        <InfoModal plantType={plantType} onClose={handleCloseModal} />
-      )}
     </div>
   );
 }
