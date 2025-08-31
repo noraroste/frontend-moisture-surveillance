@@ -38,6 +38,11 @@ const sensorNameMap: {
     location: PlantLocation.Hjemme,
     plantType: 'Fiolin Fiken',
   },
+  7: {
+    name: 'Paraplyplante',
+    location: PlantLocation.Hjemme,
+    plantType: 'Paraplyplante',
+  },
   100: {
     name: 'Fiolin fiken 1',
     location: PlantLocation.Kontoret,
@@ -110,6 +115,10 @@ export const plantTips: { [key: string]: { tip: string; imagePath: string } } =
     'Monstera adansonii': {
       tip: 'Monstera adansonii liker å tørke ut mellom vanningene. Vann når jorden er tørr 2-3 cm ned i jorden.',
       imagePath: '/images/monstera-adansonii.jpg',
+    },
+    Paraplyplante: {
+      tip: 'La planten tørke lett opp mellom hver vanning, spesielt på vinterstid. I sommerhalvåret; vann den litt 3-4 ganger i måneden. I vinterhalvåret; vannes den 1-2 ganger i måneden. Husk at jo mer lys og varme den får, desto mer vann drikker den.',
+      imagePath: '/images/paraplyplante.jpg',
     },
     // Add more plant types and tips as needed
   };
