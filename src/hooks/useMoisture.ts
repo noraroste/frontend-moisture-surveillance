@@ -57,7 +57,7 @@ export function useRecentMoisture(): UseQueryResult<SensorMoisture[]> {
 function isDataStale(timestamp: string): boolean {
   const updatedTime = new Date(timestamp).getTime();
   const currentTime = new Date().getTime();
-  const thirtyMinutesInMs = 10 * 60 * 1000;
+  const thirtyMinutesInMs = 30 * 60 * 1000;
 
   return currentTime - updatedTime > thirtyMinutesInMs;
 }
