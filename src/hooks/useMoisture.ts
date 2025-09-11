@@ -6,14 +6,14 @@ export interface SensorMoisture {
   updatedAt: string;
 }
 
-const apiUrl = process.env.REACT_APP_API_URL;
+// const apiUrl = process.env.REACT_APP_API_URL;
 const apiKey = process.env.REACT_APP_API_KEY || null;
 // const apiUrl = 'http://localhost:8080';
 export function useMoisture(sensor: number): UseQueryResult<SensorMoisture[]> {
   if (sensor == null) {
     throw new Error('Sensor ID is required');
   }
-  const MOISTURE_URL = `${apiUrl}/moisture?sensorId=${sensor}`;
+  const MOISTURE_URL = `/moisture?sensorId=${sensor}`;
   return useQuery({
     queryKey: ['moisture', sensor],
     queryFn: async () => {
@@ -33,7 +33,7 @@ export function useMoisture(sensor: number): UseQueryResult<SensorMoisture[]> {
 }
 
 export function useRecentMoisture(): UseQueryResult<SensorMoisture[]> {
-  const RECENT_MOISTURE_URL = `${apiUrl}/moisture/recent`;
+  const RECENT_MOISTURE_URL = `/moisture/recent`;
   return useQuery({
     queryKey: ['recent-moisture'],
     queryFn: async () => {

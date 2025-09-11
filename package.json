@@ -1,6 +1,7 @@
 {
   "name": "create-react-app-starter",
   "version": "0.1.0",
+  "proxy": "http://moisture-surveillance.railway.internal",
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@sb1/ffe-buttons": "^22.0.3",
