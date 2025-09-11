@@ -4,6 +4,7 @@ export interface SensorMoisture {
   moisturePercentage: number;
   sensorId: number;
   updatedAt: string;
+  isStale?: boolean;
 }
 
 const apiUrl = process.env.REACT_APP_API_URL;
@@ -47,7 +48,16 @@ export function useRecentMoisture(): UseQueryResult<SensorMoisture[]> {
       const data: SensorMoisture[] = await response.json();
       return data.map((item) => ({
         ...item,
+        isStale: isDataStale(item.updatedAt),
       }));
     },
   });
+}
+
+function isDataStale(timestamp: string): boolean {
+  const updatedTime = new Date(timestamp).getTime();
+  const currentTime = new Date().getTime();
+  const thirtyMinutesInMs = 10 * 60 * 1000;
+
+  return currentTime - updatedTime > thirtyMinutesInMs;
 }

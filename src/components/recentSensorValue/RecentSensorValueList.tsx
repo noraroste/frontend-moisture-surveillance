@@ -2,13 +2,13 @@ import { SecondaryButton } from '@sb1/ffe-buttons-react';
 import { Heading2, Paragraph } from '@sb1/ffe-core-react';
 import { Modal, ModalBlock, ModalHandle } from '@sb1/ffe-modals-react';
 import { useRef, useState } from 'react';
-import { useRecentMoisture } from '../hooks/useMoisture';
+import { useRecentMoisture } from '../../hooks/useMoisture';
 import {
   getLocation,
   getPlantName,
   getPlantType,
   plantTips,
-} from '../utils/sensorMapping';
+} from '../../utils/sensorMapping';
 import {
   daysAgo,
   hoursAgo,
@@ -17,8 +17,8 @@ import {
   recentValuesText,
   secondsAgo,
   yearsAgo,
-} from '../utils/texts';
-import { PlantLocation, StatusColors } from '../utils/types';
+} from '../../utils/texts';
+import { PlantLocation, StatusColors } from '../../utils/types';
 import RecentSensorValueCard from './RecentSensorValueCard';
 import './recentSensorValueList.css';
 import { SensorGraph } from './SensorGraph';

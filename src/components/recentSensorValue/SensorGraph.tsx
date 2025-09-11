@@ -9,15 +9,13 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
-import { useMoisture } from '../hooks/useMoisture';
+import { useMoisture } from '../../hooks/useMoisture';
 
 interface SensorGraphProps {
   sensorId: number;
 }
 
-export const SensorGraph: React.FC<SensorGraphProps> = ({
-  sensorId,
-}) => {
+export const SensorGraph: React.FC<SensorGraphProps> = ({ sensorId }) => {
   const { data, isLoading, error } = useMoisture(sensorId);
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading data</div>;

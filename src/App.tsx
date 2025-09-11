@@ -3,10 +3,11 @@ import { useState } from 'react';
 import './App.css';
 import { Header } from './components/header';
 import { LocationButtons } from './components/LocationButtons';
-import { RecentSensorValueList } from './components/RecentSensorValueList';
+import { RecentSensorValueList } from './components/recentSensorValue/RecentSensorValueList';
 import { headingRecentValuesText } from './utils/texts';
 import { PlantLocation } from './utils/types';
 import { capitalizeFirstLetter } from './utils/utilFunctions';
+import { StaleDataMessage } from './components/StaleDataMessage';
 
 export default function App() {
   const params = new URLSearchParams(window.location.search);
@@ -24,6 +25,7 @@ export default function App() {
     <div className="App">
       <Header />
       <div className="main-content">
+        <StaleDataMessage />
         <LocationButtons setLocation={setLocation} location={location} />
         <div className="main-content__tab-content">
           <Heading2>
