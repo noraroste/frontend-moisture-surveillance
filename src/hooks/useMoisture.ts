@@ -6,7 +6,7 @@ export interface SensorMoisture {
   updatedAt: string;
 }
 
-const apiUrl = 'https://moisture-surveillance-production.up.railway.app';
+const apiUrl = process.env.REACT_APP_API_URL;
 const apiKey = process.env.REACT_APP_API_KEY || null;
 // const apiUrl = 'http://localhost:8080';
 export function useMoisture(sensor: number): UseQueryResult<SensorMoisture[]> {
