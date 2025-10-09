@@ -23,7 +23,11 @@ import RecentSensorValueCard from './RecentSensorValueCard';
 import './recentSensorValueList.css';
 import { SensorGraph } from './SensorGraph';
 
-export function RecentSensorValueList({ location }: { location: string }) {
+export function RecentSensorValueList({
+  location,
+}: {
+  location: PlantLocation;
+}) {
   const modalRef = useRef<ModalHandle>(null);
   const { data } = useRecentMoisture();
   const [selectedSensorId, setSelectedSensorId] = useState<number | null>(null);

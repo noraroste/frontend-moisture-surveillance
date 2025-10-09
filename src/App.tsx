@@ -25,7 +25,7 @@ export default function App() {
     <div className="App">
       <Header />
       <div className="main-content">
-        <StaleDataMessage />
+        <StaleDataMessage location={location} />
         <LocationButtons setLocation={setLocation} location={location} />
         <div className="main-content__tab-content">
           <Heading2>
